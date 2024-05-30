@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел</title>
+</head>
+<body>
+    <h1>Список дел</h1>
+
+    <h2>Категории</h2>
+    <ul id="categories-list"></ul>
+    <form id="category-form">
+        <input type="text" id="category-name" placeholder="Название">
+        <button type="submit" onclick="addCategory()">Добавить</button>
+    </form>
+
+    <h2>Список дел</h2>
+    <ul id="todo-items-list"></ul>
+    <form id="todo-item-form">
+        <input type="text" id="todo-item-name" placeholder="Текст">
+        <select id="category-id">
+            <option value="" disabled selected>Выбрать категорию</option>
+        </select>
+        <button type="submit" onclick="addTodoItem()">Создать</button>
+    </form>
+    <script>
+        // Функция для получения данных из API
+        async function fetchData(url) {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        }
+
+        // Функция для отображения категорий
+        async function displayCategories() {
+            const categories = await fetchData('/api/Categories');
+            const categoriesList = document.getElementById('categories-list');
+            const categoryForm = document.getElementById('category-form');
+            categoriesList.innerHTML = '';
+            categories.forEach(category => {
+                const listItem = document.createElement('li');
+                listItem.textContent = category.name;
+                categoriesList.appendChild(listItem);
+            });
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                document.getElementById('category-id').appendChild(option);
+            });
+        }
+
+        // Функция для отображения дел
+        async function displayTodoItems() {
+            const todoItems = await fetchData('/api/TodoItems');
+            const todoItemsList = document.getElementById('todo-items-list');
+            todoItemsList.innerHTML = '';
+            todoItems.forEach(todoItem => {
+                const listItem = document.createElement('li');
+                listItem.textContent = todoItem.name + ' - ' + (todoItem.isComplete ? 'Completed' : 'Incomplete');
+                todoItemsList.appendChild(listItem);
+            });
+        }
+
+        // Функция для добавления категории
+        async function addCategory() {
+            const categoryName = document.getElementById('category-name').value;
+            const response = await fetch('/api/Categories', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: categoryName })
+            });
+            if (response.ok) {
+                displayCategories();
+            }
+        }
+
+        // Функция для добавления дела
+        async function addTodoItem() {
+            const todoItemName = document.getElementById('todo-item-name').value;
+            const categoryId = document.getElementById('category-id').value;
+            const response = await fetch('/api/TodoItems', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: todoItemName, categoryId: categoryId })
+            });
+            if (response.ok) {
+                displayTodoItems();
+            }
+        }
+
+        // Вызываем функции для отображения категорий и дел при загрузке страницы
+        window.onload = function () {
+            displayCategories();
+            displayTodoItems();
+        };
+    </script>
+</body>
+</html>
