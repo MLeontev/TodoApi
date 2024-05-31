@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TodoApi.Models;
 
 public class TodoItem
@@ -9,6 +11,6 @@ public class TodoItem
     public bool IsComplete { get; set; }
 
     public long CategoryId { get; set; }
-
+    
     public Category Category { get; set; }
 }

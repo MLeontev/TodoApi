@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DdvtAYCyhG2tdbs3MBt6K169J1Q0az/9AdWH1Fe18sE=",
+  "Hash": "4iPH5rgxeIbyO2W/492ZnOAeUwJOlO191zgz0XZ97Hg=",
   "Source": "TodoApi",
   "BasePath": "_content/TodoApi",
   "Mode": "Default",
@@ -36,12 +36,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\js.js",
+      "Identity": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\script.js",
       "SourceId": "TodoApi",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\",
       "BasePath": "_content/TodoApi",
-      "RelativePath": "js.js",
+      "RelativePath": "script.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,7 +52,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js.js"
+      "OriginalItemSpec": "wwwroot\\script.js"
     }
   ]
 }

@@ -19,7 +19,9 @@ public class TodoItemsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
     {
-        return await _context.TodoItems.ToListAsync();
+        return await _context.TodoItems
+            .Include(t => t.Category)
+            .ToListAsync();
     }
 
     // GET: api/TodoItems/5

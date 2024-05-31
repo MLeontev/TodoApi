@@ -555,3 +555,6 @@ C:\Users\LMax\RiderProjects\TodoApi\TodoApi\obj\Debug\net8.0\refint\TodoApi.dll
 C:\Users\LMax\RiderProjects\TodoApi\TodoApi\obj\Debug\net8.0\TodoApi.pdb
 C:\Users\LMax\RiderProjects\TodoApi\TodoApi\obj\Debug\net8.0\TodoApi.genruntimeconfig.cache
 C:\Users\LMax\RiderProjects\TodoApi\TodoApi\obj\Debug\net8.0\ref\TodoApi.dll
+C:\Users\LMax\RiderProjects\TodoApi\TodoApi\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\LMax\RiderProjects\TodoApi\TodoApi\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\LMax\RiderProjects\TodoApi\TodoApi\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

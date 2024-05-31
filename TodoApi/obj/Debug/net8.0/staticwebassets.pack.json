@@ -5,8 +5,8 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\js.js",
-      "PackagePath": "staticwebassets\\js.js"
+      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\script.js",
+      "PackagePath": "staticwebassets\\script.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TodoApi.Microsoft.AspNetCore.StaticWebAssets.props",
