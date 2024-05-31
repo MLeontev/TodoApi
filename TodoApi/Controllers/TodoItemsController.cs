@@ -47,7 +47,7 @@ public class TodoItemsController : ControllerBase
             Id = todoItem.Id,
             Name = todoItem.Name,
             IsComplete = todoItem.IsComplete,
-            CategoryName = category != null ? category.Name : null
+            CategoryName = category.Name
         };
         
         return Ok(todoDto);
@@ -55,10 +55,22 @@ public class TodoItemsController : ControllerBase
 
     // PUT: api/TodoItems/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+    public async Task<IActionResult> PutTodoItem(long id, TodoItemUpdateDto todoDto)
     {
-        if (id != todoItem.Id) return BadRequest();
+        var todoItem = await _context.TodoItems.FindAsync(id);
+        
+        if (todoItem == null)
+        {
+            return NotFound();
+        }
+        
+        var newCategory = await _context.Categories.FindAsync(todoDto.CategoryId);
 
+        todoItem.Name = todoDto.Name;
+        todoItem.IsComplete = todoDto.IsComplete;
+        todoItem.CategoryId = todoDto.CategoryId;
+        todoItem.Category = newCategory;
+        
         _context.Entry(todoItem).State = EntityState.Modified;
 
         try
@@ -78,12 +90,30 @@ public class TodoItemsController : ControllerBase
     // POST: api/TodoItems
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+    public async Task<ActionResult<TodoItemWithCategoryName>> PostTodoItem(TodoItemCreateDto todoDto)
     {
+        var category = await _context.Categories.FindAsync(todoDto.CategoryId);
+
+        var todoItem = new TodoItem
+        {
+            Name = todoDto.Name,
+            IsComplete = false,
+            CategoryId = category.Id,
+            Category = category
+        };
+        
         _context.TodoItems.Add(todoItem);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+        var todoItemWithCategoryName = new TodoItemWithCategoryName
+        {
+            Id = todoItem.Id,
+            Name = todoItem.Name,
+            IsComplete = todoItem.IsComplete,
+            CategoryName = category.Name
+        };
+
+        return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItemWithCategoryName);
     }
 
     // DELETE: api/TodoItems/5
