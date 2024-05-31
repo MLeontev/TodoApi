@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.DTOs.Category;
+using TodoApi.DTOs.TodoItem;
 using TodoApi.Models;
 
 namespace TodoApi.Controllers;
@@ -17,30 +19,72 @@ public class CategoriesController : ControllerBase
 
     // GET: api/Categories
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+    public async Task<ActionResult<IEnumerable<CategoryWithoutItemsDto>>> GetCategories()
     {
-        return await _context.Categories.ToListAsync();
+        var categories = await _context.Categories
+            .Select(c => new CategoryWithoutItemsDto
+            {
+                Id = c.Id,
+                Name = c.Name
+            })
+            .ToListAsync();
+
+        return Ok(categories);
     }
 
     // GET: api/Categories/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Category>> GetCategory(long id)
+    public async Task<ActionResult<CategoryWithoutItemsDto>> GetCategory(long id)
     {
         var category = await _context.Categories.FindAsync(id);
 
         if (category == null) return NotFound();
 
-        return category;
+        var categoryDto = new CategoryWithoutItemsDto
+        {
+            Id = category.Id,
+            Name = category.Name
+        };
+
+        return Ok(categoryDto);
+    }
+    
+    // GET: api/Categories/5/TodoItems
+    [HttpGet("{id}/TodoItems")]
+    public async Task<ActionResult<IEnumerable<TodoItemWithCategoryName>>> GetTodoItemsByCategory(long id)
+    {
+        var category = await _context.Categories.FindAsync(id);
+
+        if (category == null) return NotFound();
+
+        var todoItems = await _context.TodoItems
+            .Where(t => t.Category.Id == id)
+            .Include(t => t.Category)
+            .Select(t => new TodoItemWithCategoryName
+            {
+                Id = t.Id,
+                Name = t.Name,
+                IsComplete = t.IsComplete,
+                CategoryName = t.Category.Name
+            })
+            .ToListAsync();
+        
+        return Ok(todoItems);
     }
 
     // PUT: api/Categories/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutCategory(long id, Category category)
+    public async Task<IActionResult> PutCategory(long id, CategoryUpdateDto categoryDto)
     {
-        if (id != category.Id) return BadRequest();
-
+        var category = await _context.Categories.FindAsync(id);
+        
+        if (category == null)
+        {
+            return NotFound();
+        }
+        
         var existingCategory = await _context.Categories
-            .Where(c => c.Name == category.Name && c.Id != id)
+            .Where(c => c.Name == categoryDto.Name && c.Id != id)
             .FirstOrDefaultAsync();
 
         if (existingCategory != null)
@@ -48,6 +92,7 @@ public class CategoriesController : ControllerBase
             return BadRequest(new { message = "Категория с таким названием уже существует." });
         }
         
+        category.Name = categoryDto.Name;
         _context.Entry(category).State = EntityState.Modified;
 
         try
@@ -67,17 +112,28 @@ public class CategoriesController : ControllerBase
     // POST: api/Categories
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<Category>> PostCategory(Category category)
+    public async Task<ActionResult<CategoryWithoutItemsDto>> PostCategory(CategoryCreateDto categoryDto)
     {
-        if (await _context.Categories.AnyAsync(c => c.Name == category.Name))
+        if (await _context.Categories.AnyAsync(c => c.Name == categoryDto.Name))
         {
             return Conflict(new { message = "Такая категория уже добавлена." });
         }
         
+        var category = new Category
+        {
+            Name = categoryDto.Name
+        };
+        
         _context.Categories.Add(category);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+        var categoryWithoutItemsDto = new CategoryWithoutItemsDto
+        {
+            Id = category.Id,
+            Name = category.Name
+        };
+        
+        return CreatedAtAction("GetCategory", new { id = category.Id }, categoryWithoutItemsDto);
     }
 
     // DELETE: api/Categories/5

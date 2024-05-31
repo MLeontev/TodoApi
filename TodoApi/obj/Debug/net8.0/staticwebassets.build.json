@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4iPH5rgxeIbyO2W/492ZnOAeUwJOlO191zgz0XZ97Hg=",
+  "Hash": "0COy5jcbQgKfQqR27jyqBT3um6brXG5WrTkc/itB+ik=",
   "Source": "TodoApi",
   "BasePath": "_content/TodoApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TodoApi\\wwwroot",
       "Source": "TodoApi",
-      "ContentRoot": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\",
       "BasePath": "_content/TodoApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\index.html",
       "SourceId": "TodoApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\",
       "BasePath": "_content/TodoApi",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\script.js",
+      "Identity": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\script.js",
       "SourceId": "TodoApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\",
       "BasePath": "_content/TodoApi",
       "RelativePath": "script.js",
       "AssetKind": "All",
