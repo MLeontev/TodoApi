@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\_index.html",
+      "PackagePath": "staticwebassets\\_index.html"
+    },
+    {
+      "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\_script.js",
+      "PackagePath": "staticwebassets\\_script.js"
+    },
+    {
       "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
