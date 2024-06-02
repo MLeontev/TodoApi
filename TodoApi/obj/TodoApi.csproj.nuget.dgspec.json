@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj": {
+    "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\TodoApi.csproj",
-        "packagesPath": "C:\\Users\\MaxL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\obj\\",
+        "projectPath": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\TodoApi.csproj",
+        "packagesPath": "C:\\Users\\LMax\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MaxL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LMax\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

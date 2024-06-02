@@ -116,7 +116,7 @@ public class CategoriesController : ControllerBase
     {
         if (await _context.Categories.AnyAsync(c => c.Name == categoryDto.Name))
         {
-            return Conflict(new { message = "Такая категория уже добавлена." });
+            return Conflict(new { message = "Такая категория уже добавлена" });
         }
         
         var category = new Category

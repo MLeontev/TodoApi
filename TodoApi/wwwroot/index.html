@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Список дел</h1>
-        
-        <div class="add-category">
-            <h2>Категории</h2>
-            <form id="add-category-form">
+
+        <h2>Категории</h2>
+        <div class="category-container">
+            <form id="add-category-form" class="add-category-form">
                 <input id="new-category-name" placeholder="Название" type="text">
-                <button type="submit">Добавить</button>
+                <button class="button" type="submit">Добавить</button>
                 <div id="error-message-add-category" class="error-message"></div>
             </form>
         </div>
-
+        
         <div id="categories" class="category-container">
             
         </div>
+        
+        
     </div>
 
     <script src="script.js"></script>
