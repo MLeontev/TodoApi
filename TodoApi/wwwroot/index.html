@@ -8,23 +8,32 @@
 <body>
     <div class="container">
         <h1>Список дел</h1>
-
-        <h2>Категории</h2>
-        <div class="category-container">
+        <details>
+            <summary class="header">
+                Категории
+            </summary>
             <form id="add-category-form" class="add-category-form">
                 <input id="new-category-name" placeholder="Название" type="text">
-                <button class="button" type="submit">Добавить</button>
+                <button class="button submit-button" type="submit">Добавить</button>
                 <div id="error-message-add-category" class="error-message"></div>
             </form>
-        </div>
-        
-        <div id="categories" class="category-container">
-            
-        </div>
-        
-        
+            <div id="categories" class="category-container"></div>
+        </details>
+        <details open>
+            <summary class="header">
+                Задачи
+            </summary>
+            <form id="add-todo-form" class="add-todo-form">
+                <select id="select-category" class="select-category">
+                    <option value="" disabled selected>Выберите категорию</option>
+                </select>
+                <input id="new-todo-name" placeholder="Текст" type="text">
+                <button class="button submit-button" type="submit">Добавить</button>
+                <div id="error-message-add-todo" class="error-message"></div>
+            </form>
+            <div id="todos" class="todo-container"></div>
+        </details>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

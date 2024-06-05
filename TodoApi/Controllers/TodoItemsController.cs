@@ -27,6 +27,7 @@ public class TodoItemsController : ControllerBase
                 Id = t.Id,
                 Name = t.Name,
                 IsComplete = t.IsComplete,
+                CategoryId = t.Category.Id,
                 CategoryName = t.Category.Name
             })
             .ToListAsync();
@@ -47,6 +48,7 @@ public class TodoItemsController : ControllerBase
             Id = todoItem.Id,
             Name = todoItem.Name,
             IsComplete = todoItem.IsComplete,
+            CategoryId = category.Id,
             CategoryName = category.Name
         };
         
@@ -110,6 +112,7 @@ public class TodoItemsController : ControllerBase
             Id = todoItem.Id,
             Name = todoItem.Name,
             IsComplete = todoItem.IsComplete,
+            CategoryId = category.Id,
             CategoryName = category.Name
         };
 

@@ -8,5 +8,7 @@ public class TodoItemWithCategoryName
 
     public bool IsComplete { get; set; }
     
+    public long CategoryId { get; set; }
+    
     public string CategoryName { get; set; }
 }

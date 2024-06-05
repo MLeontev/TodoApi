@@ -1,23 +1,15 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\_index.html",
-      "PackagePath": "staticwebassets\\_index.html"
-    },
-    {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\_script.js",
-      "PackagePath": "staticwebassets\\_script.js"
-    },
-    {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\index.html",
+      "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\script.js",
+      "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\script.js",
       "PackagePath": "staticwebassets\\script.js"
     },
     {
-      "Id": "C:\\Users\\LMax\\RiderProjects\\TodoApi\\TodoApi\\wwwroot\\styles.css",
+      "Id": "C:\\Users\\MaxL\\source\\repos\\TodoApi\\TodoApi\\wwwroot\\styles.css",
       "PackagePath": "staticwebassets\\styles.css"
     },
     {

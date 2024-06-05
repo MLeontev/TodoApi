@@ -2,6 +2,17 @@ body {
     background-color: lightgrey;
 }
 
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -9,10 +20,12 @@ body {
     background-color: white;
     font-family: Trebuchet MS, sans-serif;
     border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .category-container {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .category-content {
@@ -23,27 +36,40 @@ body {
 
 .category {
     border: 2px solid #ccc;
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .category-name {
-    font-weight: bold;
+    width: 70%;
+    word-wrap: break-word;
 }
 
 .button {
-    background-color: white;
-    color: black;
-    border: 2px solid lightgrey;
+    color: white;
+    border: 1px solid lightgrey;
     padding: 5px 10px;
-    margin-left: 5px;
+    margin-left: 10px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.button:hover {
-    background-color: lightgray;
+.submit-button, .edit-button {
+    background-color: #4caf50;
+}
+
+.cancel-button, .delete-button {
+    background-color: #f44336;
+}
+
+.submit-button:hover, .edit-button:hover {
+    background-color: #45a049;
+}
+
+.cancel-button:hover, .delete-button:hover {
+    background-color: #e53935;
 }
 
 .edit-category-form {
@@ -53,17 +79,98 @@ body {
 
 .edit-form-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
+    align-items: center;
 }
 
-.container input[type="text"] {
+.edit-category-form input[type="text"], .add-category-form input[type="text"] {
     padding: 5px;
     width: 200px;
     border-radius: 5px;
+    margin-right: 0px;
+    border: 2px solid lightgrey;
+    font-family: Trebuchet MS, sans-serif;
+}
+
+.add-todo-form input[type="text"] {
+    padding: 5px;
+    width: 400px;
+    border-radius: 5px;
+    margin-right: 0px;
+    border: 2px solid lightgrey;
+    font-family: Trebuchet MS, sans-serif;
+}
+
+.edit-todo-form input[type="text"] {
+    padding: 5px;
+    width: 380px;
+    border-radius: 5px;
+    margin-right: 10px;
     border: 2px solid lightgrey;
     font-family: Trebuchet MS, sans-serif;
 }
 
 .error-message {
     color: red;
+    margin-left: 5px;
+}
+
+.todo {
+    border: 2px solid #ccc;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container {
+    margin-top: 20px;
+}
+
+.todo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-category {
+    width: 170px;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 4px;
+    border: 2px solid lightgrey;
+    font-family: Trebuchet MS, sans-serif;
+}
+
+.edit-todo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-todo-form {
+    margin-top: 20px;
+    display: none;
+}
+
+.todo-text {
+    word-break: break-word;
+}
+
+.todo-category-name {
+    word-break: break-word;
+}
+
+.todo-checkbox-input {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 55%;
+}
+
+.todo-category-buttons {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 45%;
 }
