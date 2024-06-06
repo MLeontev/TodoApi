@@ -5,6 +5,9 @@ const addCategoryForm = document.getElementById('add-category-form');
 const addCategoryInput = document.getElementById('new-category-name');
 const errorMessageAddCategory = document.getElementById('error-message-add-category');
 
+const filterCategorySelect = document.getElementById('filter-category');
+const filterStatusSelect = document.getElementById('filter-status');
+
 window.addEventListener('DOMContentLoaded', async () => {
     await getData();
 });
@@ -28,6 +31,7 @@ async function getCategories() {
     const categories =  await getCategoriesData();
     displayCategories(categories);
     fillCategorySelect(categories, categorySelect);
+    fillFilterCategorySelect(categories, filterCategorySelect);
 }
 
 function displayCategories(categories) {
@@ -169,22 +173,28 @@ const addTodoInput = document.getElementById('new-todo-name');
 const errorMessageAddTodo = document.getElementById('error-message-add-todo');
 const categorySelect = document.getElementById('select-category');
 
-async function getTodos() {
+async function getTodosData() {
     const response = await fetch('api/TodoItems');
     const todos = await response.json();
+    return todos;
+}
+
+async function getTodos() {
+    const todos = await getTodosData();
     displayTodos(todos);
 }
 
 function displayTodos(todos) {
     todosList.innerHTML = '';
     todos.forEach(todo => {
+        console.log(todo);
         const todoElement = createTodoElement(todo)
         todosList.appendChild(todoElement);
     });
 }
 
 function fillCategorySelect(categories, selectElement, selectedCategoryId = null) {
-    categorySelect.innerHTML = '<option value="" disabled selected>Выберите категорию</option>';
+    selectElement.innerHTML = '<option value="" disabled selected>Выберите категорию</option>';
     categories.forEach(category => {
         const option = document.createElement('option');
         option.value = category.id;
@@ -192,6 +202,17 @@ function fillCategorySelect(categories, selectElement, selectedCategoryId = null
         if (category.id === selectedCategoryId) {
             option.selected = true;
         }
+        selectElement.appendChild(option);
+    });
+}
+
+function fillFilterCategorySelect(categories, selectElement) {
+    selectElement.innerHTML = `<option value="" disabled selected>Фильтр по категории</option>
+                               <option value="all">Все категории</option>`;
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.name;
         selectElement.appendChild(option);
     });
 }
@@ -305,7 +326,7 @@ async function deleteTodo(todoId) {
 
 addTodoForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-
+    
     errorMessageAddTodo.textContent = '';
     
     const todoText = addTodoInput.value.trim();
@@ -338,4 +359,37 @@ addTodoForm.addEventListener('submit', async function (event) {
     addTodoInput.value = '';
     categorySelect.selectedIndex = 0;
 });
+//endregion
+
+//region Фильтры
+
+filterCategorySelect.addEventListener('change', updateTodos);
+filterStatusSelect.addEventListener('change', updateTodos);
+
+async function filterTodosList(todos, selectedCategoryId, selectedStatus) {
+    let filteredTodos = todos;
+
+    if (selectedCategoryId && selectedCategoryId !== 'all') {
+        filteredTodos = filteredTodos.filter(todo => todo.categoryId == selectedCategoryId);
+    }
+
+    if (selectedStatus === 'complete') {
+        filteredTodos = filteredTodos.filter(todo => todo.isComplete);
+    } else if (selectedStatus === 'incomplete') {
+        filteredTodos = filteredTodos.filter(todo => !todo.isComplete);
+    }
+    
+    return filteredTodos;
+}
+
+async function updateTodos() {
+    const todos = await getTodosData();
+
+    const selectedCategoryId = filterCategorySelect.value;
+    const selectedStatus = filterStatusSelect.value;
+
+    const filteredTodos = await filterTodosList(todos, selectedCategoryId, selectedStatus);
+    displayTodos(filteredTodos);
+}
+
 //endregion

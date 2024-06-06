@@ -142,6 +142,16 @@ h1 {
     font-family: Trebuchet MS, sans-serif;
 }
 
+.select-status {
+    width: 170px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 3px;
+    padding: 4px;
+    border: 2px solid lightgrey;
+    font-family: Trebuchet MS, sans-serif;
+}
+
 .edit-todo-content {
     display: flex;
     justify-content: space-between;
@@ -173,4 +183,10 @@ h1 {
     justify-content: right;
     align-items: center;
     width: 45%;
+}
+
+.filters {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
 }

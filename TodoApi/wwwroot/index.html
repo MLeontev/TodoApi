@@ -23,6 +23,17 @@
             <summary class="header">
                 Задачи
             </summary>
+            <div class="filters">
+                <select id="filter-category" class="select-category">
+                    <option value="" disabled selected>Фильтр по категории</option>
+                </select>
+                <select id="filter-status" class="select-status">
+                    <option value="" disabled selected>Фильтр по статусу</option>
+                    <option value="all">Все</option>
+                    <option value="complete">Выполнено</option>
+                    <option value="incomplete">Не выполнено</option>
+                </select>
+            </div>
             <form id="add-todo-form" class="add-todo-form">
                 <select id="select-category" class="select-category">
                     <option value="" disabled selected>Выберите категорию</option>
