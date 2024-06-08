@@ -10,7 +10,7 @@
         <h1>Список дел</h1>
         <details>
             <summary class="header">
-                Категории
+                Категории <span id="category-count">(0)</span>
             </summary>
             <form id="add-category-form" class="add-category-form">
                 <input id="new-category-name" placeholder="Название" type="text">
@@ -21,8 +21,9 @@
         </details>
         <details open>
             <summary class="header">
-                Задачи
+                Задачи <span id="todo-count">(0)</span>
             </summary>
+            <div class="filter-header">Фильтры</div>
             <div class="filters">
                 <select id="filter-category" class="select-category">
                     <option value="" disabled selected>Фильтр по категории</option>

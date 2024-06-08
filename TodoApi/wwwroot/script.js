@@ -8,6 +8,8 @@ const errorMessageAddCategory = document.getElementById('error-message-add-categ
 const filterCategorySelect = document.getElementById('filter-category');
 const filterStatusSelect = document.getElementById('filter-status');
 
+const categoryCount = document.getElementById('category-count');
+
 window.addEventListener('DOMContentLoaded', async () => {
     await getData();
 });
@@ -40,6 +42,7 @@ function displayCategories(categories) {
         const categoryElement = createCategoryElement(category);
         categoryList.appendChild(categoryElement);
     });
+    categoryCount.textContent = `(${categories.length})`;
 }
 
 function createCategoryElement(category) {
@@ -148,6 +151,10 @@ async function editCategory(categoryId, updatedName, errorMessageElement) {
 }
 
 async function deleteCategory(categoryId) {
+    if (!confirm('Вы уверены, что хотите удалить категорию?')) {
+        return;
+    }
+    
     try {
         const response = await fetch(`/api/Categories/${categoryId}`, {
             method: 'DELETE'
@@ -173,6 +180,8 @@ const addTodoInput = document.getElementById('new-todo-name');
 const errorMessageAddTodo = document.getElementById('error-message-add-todo');
 const categorySelect = document.getElementById('select-category');
 
+const todoCount = document.getElementById('todo-count');
+
 async function getTodosData() {
     const response = await fetch('api/TodoItems');
     const todos = await response.json();
@@ -187,10 +196,10 @@ async function getTodos() {
 function displayTodos(todos) {
     todosList.innerHTML = '';
     todos.forEach(todo => {
-        console.log(todo);
         const todoElement = createTodoElement(todo)
         todosList.appendChild(todoElement);
     });
+    todoCount.textContent = `(${todos.length})`;
 }
 
 function fillCategorySelect(categories, selectElement, selectedCategoryId = null) {
@@ -318,6 +327,9 @@ async function editTodo(todoId, updatedText, categoryId, isComplete, errorMessag
 }
 
 async function deleteTodo(todoId) {
+    if (!confirm('Вы уверены, что хотите удалить задачу?')) {
+        return;
+    }
     const response = await fetch(`api/TodoItems/${todoId}`, {
         method: 'DELETE'
     });

@@ -22,6 +22,7 @@ public class TodoItemsController : ControllerBase
     {
         return await _context.TodoItems
             .Include(t => t.Category)
+            .OrderByDescending(t => t.Id)
             .Select(t => new TodoItemWithCategoryName()
             {
                 Id = t.Id,
